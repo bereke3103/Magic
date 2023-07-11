@@ -70,7 +70,7 @@ namespace MagicVilla_VillaApi.Migrations
                         {
                             Id = 1,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 7, 8, 1, 16, 6, 399, DateTimeKind.Local).AddTicks(5479),
+                            CreatedDate = new DateTime(2023, 7, 9, 2, 37, 37, 402, DateTimeKind.Local).AddTicks(8761),
                             Details = "Details is good",
                             ImageUrl = "http://infozakon.kz/uploads/posts/2023-07/1688626858_1688535881_kz3_9824_2.jpg",
                             Name = "New Villa",
@@ -83,7 +83,7 @@ namespace MagicVilla_VillaApi.Migrations
                         {
                             Id = 2,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 7, 8, 1, 16, 6, 399, DateTimeKind.Local).AddTicks(5508),
+                            CreatedDate = new DateTime(2023, 7, 9, 2, 37, 37, 402, DateTimeKind.Local).AddTicks(8774),
                             Details = "Details is good",
                             ImageUrl = "http://infozakon.kz/uploads/posts/2023-07/1688626858_1688535881_kz3_9824_2.jpg",
                             Name = "New Villa",
@@ -96,7 +96,7 @@ namespace MagicVilla_VillaApi.Migrations
                         {
                             Id = 3,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 7, 8, 1, 16, 6, 399, DateTimeKind.Local).AddTicks(5510),
+                            CreatedDate = new DateTime(2023, 7, 9, 2, 37, 37, 402, DateTimeKind.Local).AddTicks(8776),
                             Details = "Details is good",
                             ImageUrl = "http://infozakon.kz/uploads/posts/2023-07/1688626858_1688535881_kz3_9824_2.jpg",
                             Name = "New Villa",
@@ -109,7 +109,7 @@ namespace MagicVilla_VillaApi.Migrations
                         {
                             Id = 4,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 7, 8, 1, 16, 6, 399, DateTimeKind.Local).AddTicks(5511),
+                            CreatedDate = new DateTime(2023, 7, 9, 2, 37, 37, 402, DateTimeKind.Local).AddTicks(8778),
                             Details = "Details is good",
                             ImageUrl = "http://infozakon.kz/uploads/posts/2023-07/1688626858_1688535881_kz3_9824_2.jpg",
                             Name = "New Villa",
@@ -122,7 +122,7 @@ namespace MagicVilla_VillaApi.Migrations
                         {
                             Id = 5,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 7, 8, 1, 16, 6, 399, DateTimeKind.Local).AddTicks(5513),
+                            CreatedDate = new DateTime(2023, 7, 9, 2, 37, 37, 402, DateTimeKind.Local).AddTicks(8780),
                             Details = "Details is good",
                             ImageUrl = "http://infozakon.kz/uploads/posts/2023-07/1688626858_1688535881_kz3_9824_2.jpg",
                             Name = "New Villa",
@@ -131,6 +131,42 @@ namespace MagicVilla_VillaApi.Migrations
                             Sqft = 505,
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
+                });
+
+            modelBuilder.Entity("MagicVilla_VillaApi.Models.VillaNumber", b =>
+                {
+                    b.Property<int>("VillaNo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SpecialDetails")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("VilldID")
+                        .HasColumnType("int");
+
+                    b.HasKey("VillaNo");
+
+                    b.HasIndex("VilldID");
+
+                    b.ToTable("VillaNumbers");
+                });
+
+            modelBuilder.Entity("MagicVilla_VillaApi.Models.VillaNumber", b =>
+                {
+                    b.HasOne("MagicVilla_VillaApi.Models.Villa", "Villa")
+                        .WithMany()
+                        .HasForeignKey("VilldID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Villa");
                 });
 #pragma warning restore 612, 618
         }
